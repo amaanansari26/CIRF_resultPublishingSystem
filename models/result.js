@@ -1,34 +1,29 @@
 const mongoose = require('mongoose'),
+    
+
     Schema = mongoose.Schema;
 
 const resultSchema= new Schema({
-    email:{
-        type:String,
-        required:true
-    },
-    password:{
-        type:String,
-        required:true
-    },
-    type:{
-        type:String,//stu/fc/hod
-        required:true
-    },
-    rollno:{
+   rollno:{
         type:Number,
+        required:true
     },
-    currentBatch:{
-        type :Schema.Types.ObjectId,
-        ref:'batch'
+    subject:{
+        type:Schema.Types.ObjectId,
+        ref:'subject',
+        required:true
     },
-    profile:{
-        type:String,
-        default:'/images/default.png'
+    om:{
+        type:Number,
+        required:true
     },
-    address:{
-        type:String
+    tm:{
+        type:Number,
+        required:true
     }
 
 })
+
+
 
 module.exports = mongoose.model('result', resultSchema);
