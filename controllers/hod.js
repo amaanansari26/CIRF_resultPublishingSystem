@@ -41,4 +41,12 @@ exports.facultyadd = (req,res)=>{
         }).catch()
  
 }
+exports.facultydelete = (req,res)=>{
+    User.findById(req.params.id).then(student=>{
+        if(!student){return res.redirect('/students')}
+        student.deletethis(std=>{
+            res.redirect('/hod/dashboard/faculties')
+        })
+    }).catch(errh)
+}
 

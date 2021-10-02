@@ -17,14 +17,7 @@ const auth=(req,res,next)=>{
 router.get('/dashboard',auth,hodController.dashboard)
 router.get('/dashboard/faculties',auth,hodController.facultylist)
 router.post('/dashboard/faculties/add',auth,hodController.facultyadd)
-router.get('/dashboard/faculties/delete/:id',(req,res)=>{
-    User.findById(req.params.id).then(student=>{
-        if(!student){return res.redirect('/students')}
-        student.deletethis(std=>{
-            res.redirect('/hod/dashboard/faculties')
-        })
-    }).catch(errh)
-})
+router.get('/dashboard/faculties/delete/:id',auth,hodController.facultydelete)
 
 
 module.exports= router;
